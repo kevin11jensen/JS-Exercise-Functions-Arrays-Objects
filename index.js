@@ -225,11 +225,13 @@ function sortCarInventory(inventory) {
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
 function getModelYears(inventory) {
-  let i;
+  let whatever = [];
   for (let i = 0; i < inventory.length; i++) {
-    return inventory[i].car_year;
+
+    whatever.push(inventory[i].car_year);
+    
   }
-  
+  return whatever;
 }
 
 /**
@@ -245,8 +247,17 @@ function getModelYears(inventory) {
  * in the same order as they appear in the original inventory.
 */
 function getOlderCars(inventory, maxYear) {
-  return inventory[]
-}
+  let getOldCarArray = [];
+  for (i = 0; i < inventory.length; i++) {
+    if (inventory[i].car_year <= maxYear) {
+      getOldCarArray.push(inventory[i]);
+    }
+      
+    }
+    return getOldCarArray;
+  }
+
+
 
 /**
  * ### Challenge `getGermanCars`
@@ -259,8 +270,21 @@ function getOlderCars(inventory, maxYear) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
+function getGermanCars(inventory) {
   /* code here */
+  let german = [];
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i].car_make === "Audi"){
+      german.push(inventory[i]);
+    }else if(inventory[i].car_make === "Mercedes-Benz"){
+      german.push(inventory[i]);
+    }else if(inventory[i].car_make === "Volkswagen"){ 
+      german.push(inventory[i]);
+    }else if(inventory[i].car_make === "BMW"){
+      german.push(inventory[i]);
+    }
+  }
+  return german;
 }
 
 /**
@@ -269,19 +293,24 @@ function getGermanCars(/* code here */) {
  * @instructions
  * Create arrow function versions of the following commented-out functions:
  * 
- * const sum =  (a, b) => a + b;
+ * const sum = function (a, b) {
+ *   return a + b
+ * }
  * 
- * 
- const addFive = (num) => num + 5
- * 
+ * const addFive = function(num) {
+*    return num + 5
+ * }
  *
- * const argTimesTwo = (num) => num * 2
-
+ * const argTimesTwo = function (num) {
+ *   return num * 2
+ * }
 */
+
 const sum = (a, b) => a + b;
-const addFive = (num) => num + 5;
+const addFive = (num) => num * 5;
 const argTimesTwo = (num) => num * 2;
 
+/**
 /**
  * ### Challenge `carMaker`
  * THIS ONE IS A STRETCH GOAL. ATTEMPT IT ONLY AFTER
@@ -295,8 +324,14 @@ const argTimesTwo = (num) => num * 2;
  *         (1) causes the odometer in the object to be increased by the distance,
  *         (2) returns the updated value of the `odometer`.
 */
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(odometerReading) {
+  return {
+    odometer: odometerReading,
+    drive: function(distance){
+      return this.odometer += distance;
+    }
+  }
+
 }
 
 /// ////// END OF CHALLENGE /////////
