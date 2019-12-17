@@ -193,10 +193,14 @@ function getLastCarInfo(inventory) {
  * it will return `This is a Lincoln Navigator`.
 */
 function getCarInfoById(inventory, id) {
-  return "This is a " + inventory[id -1].car_make + inventory[id -1].car_model;
-  
+  // return "This is a " + inventory[id -1].car_make + inventory[id -1].car_model;
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].id === id){
+      return `This is a ${inventory[i].car_make} ${inventory[i].car_model}`;
+    }
+  }
 }
-
+// getCarInfoById();
 /**
  * ### Challenge `sortCarInventory`
  * 
@@ -209,8 +213,10 @@ function sortCarInventory(inventory) {
   let sortInventory = function (elementOne, elementTwo) {
     if (elementOne.car_model > elementTwo.car_model) {
       return 1;
-    }
-    else return -1;
+    } else if (elementOne.car_model < elementTwo.car_model) {
+      return -1;
+    } else return 0;
+    
   }
   return inventory.sort(sortInventory);
 }
